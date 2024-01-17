@@ -1,30 +1,52 @@
-import { Button, Display, NumberButton, OperatorButton } from "./components"
+import { useState } from "react"
 import { numbers, operators } from "./constants"
+import $ from 'jquery';
 
 const App = () => {
+  const [input, setInput] = useState('0');
+  const [formula, setFormula] = useState('');
+
+  const handleNumber = (number) => {
+    if (!$('#formula').text()) {
+      setInput(`${number}`);
+      setFormula(`${number}`);
+    } else {
+      setInput(`${input}${number}`);
+      setFormula(`${input}${number}`);
+    }
+  };
+
+  const handleClear = () => {
+    setInput('0');
+    setFormula('');
+  }
+
   return (
     <div>
-      <main className="calculator">
-        <Display />
-        <Button id="equals" text="="/>
-        {numbers.map(number => (
-          <NumberButton 
-            key={number.key}
-            id={number.key}
-            text={number.text}
-          />
-        ))}
-        {operators.map(operator => (
-          <OperatorButton
-            key={operator.id}
-            id={operator.id}
-            text={operator.text} 
-          />
-        ))}
-        <Button id="decimal" text="."/>
-        <Button id="clear" text="AC"/>
+      <div id="formula" style={{ height: '18px', }}>{formula}</div>
+      <div id="display" style={{ height: '18px', }}>{input}</div>
+      <button id="equals" type="button">=</button>
+      
+      {numbers.map((number) => (
+        <button 
+          key={number.id} 
+          id={number.id} 
+          type="button"
+          onClick={() => handleNumber(number.text)}
+        >{number.text}</button>
+      ))}
 
-      </main>
+      {operators.map((operator) => (
+        <button 
+          key={operator.id}
+          id={operator.id} 
+          className='operator'
+          type="button"
+        >{operator.text}</button>
+      ))}
+
+      <button id="decimal" type="button">.</button>
+      <button id="clear" type="button" onClick={handleClear}>AC</button>
     </div>
   )
 }
