@@ -1,6 +1,7 @@
-import { useState } from "react"
-import { numbers, operators } from "./constants"
-import $ from 'jquery';
+import { useState } from "react";
+import { numbers, operators } from "./constants";
+import $ from "jquery";
+import { evaluate } from "mathjs";
 
 const App = () => {
   const [input, setInput] = useState('0');
@@ -16,6 +17,9 @@ const App = () => {
     } else if ( /[-+*/]0$/.test(formula) ) {
       setInput(`${number}`);
       setFormula(`${formula.slice(0, formula.length - 1)}${number}`);
+    } else if ( /=/.test(formula) ) {
+      setInput(`${number}`);
+      setFormula(`${number}`);
     } else {
       setInput(`${input}${number}`);
       setFormula(`${formula}${number}`);
@@ -23,12 +27,16 @@ const App = () => {
   };
 
   const handleDecimal = () => {
+    if ( /=/.test(formula) ) {
+      setInput('0.');
+      setFormula('0.');
+    }
     if (input.indexOf('.') === -1 && /\d/.test(input)) {
       setInput(`${input}.`);
       !$('#formula').text() 
         ? setFormula('0.') 
         : setFormula(`${formula}.`);
-    } 
+    }
     if ( /[-+*/]/.test(input) ) {
       setInput('0.');
       setFormula(`${formula}0.`);
@@ -63,9 +71,20 @@ const App = () => {
           setFormula(`${formula.slice(0, formula.length - 2)}${operator}`); 
       }
     }
+
+    if ( /=/.test(formula) ) {
+      setInput(`${operator}`);
+      setFormula(`${input}${operator}`);
+    }
   }
 
-  // TODO: handleEquals function
+  const handleEquals = () => {
+    let result = evaluate(formula);
+    if (result === undefined) { result = 'NaN' }
+
+    setInput(result);
+    setFormula(`${formula}=${result}`)
+  }
 
   const handleClear = () => {
     setInput('0');
@@ -76,7 +95,7 @@ const App = () => {
     <div>
       <div id="formula" style={{ height: '18px', }}>{formula}</div>
       <div id="display" style={{ height: '18px', }}>{input}</div>
-      <button id="equals" type="button">=</button>
+      <button id="equals" type="button" onClick={handleEquals}>=</button>
       
       {numbers.map((number) => (
         <button 
