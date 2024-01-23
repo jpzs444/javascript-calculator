@@ -1,0 +1,12 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  width: 20.5rem;
+  height: 40.75rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: linear-gradient(191deg, #17181A -4.95%, #17181A 103.74%);
+  overflow: hidden;
+}

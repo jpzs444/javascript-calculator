@@ -1,0 +1,124 @@
+@use '../util/' as u;
+
+
+
+.input {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  column-gap: 0.75rem;
+  row-gap: 0.6rem;
+
+  & > * {
+    padding: 0.575rem 0.25rem;
+  }
+}
+
+#clear {
+  background-color: #616161;
+  color: #A5A5A5;
+
+  &:hover {
+    background-color: #a3a3a3;
+    color: #6d6d6d;
+  }
+}
+
+.number, #decimal {
+  background-color: #303136;
+
+  &:hover {
+    background-color: #50525a;
+  }
+}
+
+.operator {
+  background-color: #005DB2;
+
+  &:hover {
+    background-color: #1282eb;
+  }
+}
+
+#equals {
+  background-color: #1991FF;
+  color: #B2DAFF;
+
+  &:hover {
+    background-color: #47a5fd;
+  }
+}
+
+// For the order and layout
+#clear {
+  order: 1;
+  grid-column: 1 / 3;
+}
+
+#divide {
+  order: 2;
+}
+
+#multiply {
+  order: 3;
+}
+
+#seven {
+  order: 4;
+}
+
+#eight {
+  order: 5;
+}
+
+#nine {
+  order: 6;
+}
+
+#subtract {
+  order: 7;
+}
+
+#four {
+  order: 8;
+}
+
+#five {
+  order: 9;
+}
+
+#six {
+  order: 10;
+}
+
+#add {
+  order: 11;
+}
+
+#one {
+  order: 12;
+}
+
+#two {
+  order: 13;
+}
+
+#three {
+  order: 14;
+}
+
+#equals {
+  order: 15;
+  grid-column: 4 / 5;
+  grid-row: 4 / 6;
+}
+
+#zero {
+  order: 16;
+  grid-column: 1 / 3;
+}
+
+#decimal {
+  order: 17;
+}
+

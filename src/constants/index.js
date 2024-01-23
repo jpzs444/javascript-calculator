@@ -43,20 +43,20 @@ export const numbers = [
 
 export const operators = [
   {
-    id: 'add',
-    text: '+',
-  },
-  {
-    id: 'subtract',
-    text: '-',
+    id: 'divide',
+    text: '/',
   },
   {
     id: 'multiply',
     text: 'x',
   },
   {
-    id: 'divide',
-    text: '/',
+    id: 'subtract',
+    text: '-',
+  },
+  {
+    id: 'add',
+    text: '+',
   },
 ]
 
