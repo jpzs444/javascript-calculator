@@ -94,7 +94,7 @@ const App = () => {
   return (
     <div className="calculator">
       <div className="output">
-        <div id="formula" style={{ height: '35px', }}>{formula}</div>
+        <div id="formula">{formula}</div>
         <div id="display">{input}</div>
       </div>
       

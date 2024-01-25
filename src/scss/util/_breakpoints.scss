@@ -9,3 +9,9 @@ $xxl: 1536px;
     @content;
   }
 }
+
+@mixin max-breakpoint($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}

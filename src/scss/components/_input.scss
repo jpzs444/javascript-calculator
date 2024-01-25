@@ -1,7 +1,5 @@
 @use '../util/' as u;
 
-
-
 .input {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -11,6 +9,10 @@
 
   & > * {
     padding: 0.575rem 0.25rem;
+
+    @include u.max-breakpoint(u.$sm) {
+      padding: 0.975rem 0.25rem;
+    }
   }
 }
 
