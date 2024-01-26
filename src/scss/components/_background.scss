@@ -1,0 +1,101 @@
+@use '../util/' as u;
+
+.positioning {
+  position: relative;
+}
+
+.circle-bg {
+  width: 40rem;
+  height: 40rem;
+  border-radius: 54.625rem;
+  background: #109DFF;
+  opacity: .85;
+
+  position: absolute;
+  z-index: -5;
+  left: -47%;
+  bottom: -10%;
+
+
+  @include u.max-breakpoint(u.$sm) {
+    display: none;
+  }
+}
+
+.circle-glow {
+  background-color: #24A5FF;
+  filter: blur(50.5px);
+
+  position: absolute;
+  z-index: 5;
+
+  &-1 {
+    width: 10rem;
+    height: 10rem;
+    top: -15%;
+    right: -8%;
+  }
+
+  &-2 {
+    width: 10rem;
+    height: 10rem;
+    bottom: -25%;
+    right: 25%;
+  }
+}
+
+
+.rectangle-shadow {
+  width: 20.5rem;
+  height: 40.75rem;
+  border-radius: 2rem;
+  background: rgba(0, 68, 115, 0.72); 
+  filter: blur(63.5px);
+
+  position: absolute;
+  z-index: 0;
+  top: 10%;
+  right: -10%;
+}
+
+.dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
+  background-color: #38B9FF;
+
+  position: absolute;
+  z-index: 5;
+  
+  &-1 {
+    bottom: 0%;
+    right: -50%;
+  }
+
+  &-2 {
+    top: 40%;
+    left: -80%;
+  }
+}
+
+.square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.60) -9.69%, rgba(255, 255, 255, 0.40) 114.23%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+
+  transform: rotate(-32.959deg);
+  position: absolute;
+  z-index: 5;
+  top: 15%;
+  left: -50%;
+}
