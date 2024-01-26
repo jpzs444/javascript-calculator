@@ -92,39 +92,41 @@ const App = () => {
   }
 
   return (
-    <div className="calculator">
-      <div className="output">
-        <div id="formula">{formula}</div>
-        <div id="display">{input}</div>
-      </div>
-      
-      <div className="input">
-        <button id="clear" type="button" onClick={handleClear}>AC</button>
+    <main className="container">
+      <div className="calculator">
+        <div className="output">
+          <div id="formula">{formula}</div>
+          <div id="display">{input}</div>
+        </div>
         
-        {numbers.map((number) => (
-          <button 
-            key={number.id} 
-            id={number.id} 
-            className="number"
-            type="button"
-            onClick={() => handleNumber(number.text)}
-          >{number.text}</button>
-        ))}
+        <div className="input">
+          <button id="clear" type="button" onClick={handleClear}>AC</button>
+          
+          {numbers.map((number) => (
+            <button 
+              key={number.id} 
+              id={number.id} 
+              className="number"
+              type="button"
+              onClick={() => handleNumber(number.text)}
+            >{number.text}</button>
+          ))}
 
-        {operators.map((operator) => (
-          <button 
-            key={operator.id}
-            id={operator.id} 
-            className='operator'
-            type="button"
-            onClick={() => handleOperator(operator.text)}
-          >{operator.text}</button>
-        ))}
+          {operators.map((operator) => (
+            <button 
+              key={operator.id}
+              id={operator.id} 
+              className='operator'
+              type="button"
+              onClick={() => handleOperator(operator.text)}
+            >{operator.text}</button>
+          ))}
 
-        <button id="decimal" type="button" onClick={handleDecimal}>.</button>
-        <button id="equals" type="button" onClick={handleEquals}>=</button>
+          <button id="decimal" type="button" onClick={handleDecimal}>.</button>
+          <button id="equals" type="button" onClick={handleEquals}>=</button>
+        </div>
       </div>
-    </div>
+    </main>
   )
 }
 

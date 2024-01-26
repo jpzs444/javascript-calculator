@@ -1,3 +1,10 @@
 @forward 'components';
 @forward 'globals';
 @forward 'util';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
